@@ -31,7 +31,7 @@ export default function LoginItems() {
                 localStorage.setItem("email", Email);
     
                 alert("Login successful");
-                navigate("/dashboard")
+                navigate("/")
             } else {
                 alert("Login failed: " + data.message);
             }
