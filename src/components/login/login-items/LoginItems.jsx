@@ -1,17 +1,20 @@
 import styles from "./login-items.module.css"
 import imageLogo from "/assets/logo.jpg"
+import { useNavigate } from "react-router-dom";
 import {  useState } from "react"
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 
 export default function LoginItems() {
+    const navigate = useNavigate()
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+        e.preventDefault()
         try {
             const response = await fetch("http://localhost:8080/auth/login", {
                 method: "POST",
@@ -20,22 +23,22 @@ export default function LoginItems() {
                     email: Email,
                     password: Password
                 })
-            })
+            });
             const data = await response.json();
-
+    
             if (response.ok) {
-                alert("Login successful:", data.message)
-                console.log("Login successful:", data.message);
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("email", Email);
+    
+                alert("Login successful");
+                navigate("/dashboard")
             } else {
-                console.error("Login failed:", data.message);
-                alert("Login failed:", data.message)
+                alert("Login failed: " + data.message);
             }
-        
-        
         } catch (error) {
-                    console.error("Error during login:", error);
-                }
-            };
+            console.error("Error during login:", error);
+        }
+    };
 
     return ( 
             <div className={styles.container}>
@@ -54,6 +57,11 @@ export default function LoginItems() {
                         style={{
                             padding: "15px",
                             width: "90%",
+                        }}
+                        onKeyDownCapture={(e) => {
+                            if(e.key === "Enter") {
+                                handleLogin(e)
+                            }
                         }}/>
 
                         <div

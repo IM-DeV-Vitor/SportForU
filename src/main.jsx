@@ -1,10 +1,14 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import ReactDOM from 'react-dom/client'
 import App from "./components/main/App.jsx"
-import Login from './components/login/login.jsx'
+import { BrowserRouter } from 'react-router-dom'
 
-createRoot(document.getElementById('root')).render(
+const root = ReactDOM.createRoot(document.querySelector("#root"))
+
+root.render(
   <StrictMode>
-    <Login />
+    <BrowserRouter basename="/SportForU/">
+      <App />
+    </BrowserRouter>
   </StrictMode>,
 )

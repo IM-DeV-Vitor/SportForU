@@ -1,10 +1,14 @@
-import styles from "./App.module.css"
+import { Routes, Route } from "react-router-dom";
+import Login from "../login/login.jsx";
+import Dashboard from "../routes/dashboard.jsx";
 
-export default function () {
-    return (
-        <div>
-            
-        </div>
-    )
+function App() {
+  return (
+      <Routes>
+        <Route path="/auth/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+  );
 }
 
+export default App;
