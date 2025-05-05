@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tagesschrift&display=swap');
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
 .container {
     display: flex;
     flex-direction: column;
-    height: 65vh;
+    min-height: 65vh;
     width: 22vw;
     align-items: center;
     justify-content: center;
@@ -10,19 +14,20 @@
     background-color: black;
     border-radius: 8px;
     border: .6px solid white;
+    overflow: hidden;
 }
 
 .inputsContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 40px;
     width: 90%;
 }
 
 input {
     padding: 15px 20px;
     width: 90%;
-    margin-top: 40px;
     border-radius: 10px;
     border: .5px solid rgb(205, 204, 204);
     max-width: 275px;
@@ -31,7 +36,6 @@ input {
 button {
     display: block;
     margin: auto;
-    margin-top: 40px;
     padding: 20px 20px;
     width: 80%;
     cursor: pointer;
@@ -118,5 +122,13 @@ h1 {
 
     input, button {
         margin-top: 15px;
+    }
+}
+
+@media screen and (max-width: 500px) and (orientation: portrait) {
+    .container {
+        width: 90vw;
+        padding: 10px;
+        border: none;
     }
 }
