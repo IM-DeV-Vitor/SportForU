@@ -1,5 +1,6 @@
 import styles from "./login-items.module.css"
 import imageLogo from "/assets/logo.jpg"
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {  useState } from "react"
 import { IoMdEye } from "react-icons/io";
@@ -72,7 +73,7 @@ export default function LoginItems() {
                         </div>
                     </div>
                     <button onClick={handleLogin}>Login</button>
-                    <a href="">Haven't an account?</a>
+                    <Link to={"/auth/register"}>Haven't an account?</Link>
                 </div>
             </div>
     ) 

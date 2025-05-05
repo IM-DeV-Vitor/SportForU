@@ -16,7 +16,7 @@ export default function Dashboard() {
     return (
         <div>
             <h1 style={{textAlign:"center"}}>Dashboard</h1>
-            <p style={{textAlign:"justify", color:"white",fontFamily:"Arial", fontSize:"1.6em"}}>Bem-vindo, {email}</p>
+            <p style={{textAlign:"justify", color:"white",fontFamily:"Arial", fontSize:"1.6em"}}>Área em desenvolvimento</p>
 
             <button onClick={() => {
                 localStorage.clear();
