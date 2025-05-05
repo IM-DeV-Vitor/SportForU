@@ -16,7 +16,7 @@ export default function LoginItems() {
     const handleLogin = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch("http://localhost:8080/auth/login", {
+            const response = await fetch("https://sportforu-backend.onrender.com/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
