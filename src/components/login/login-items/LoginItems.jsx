@@ -72,6 +72,7 @@ export default function LoginItems() {
                         </div>
                     </div>
                     <button onClick={handleLogin}>Login</button>
+                    <a href="">Haven't an account?</a>
                 </div>
             </div>
     ) 
