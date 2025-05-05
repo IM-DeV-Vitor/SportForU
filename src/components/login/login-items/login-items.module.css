@@ -22,15 +22,38 @@
     align-items: center;
     flex-direction: column;
     gap: 40px;
-    width: 90%;
+    width: 100%;
 }
 
 input {
     padding: 15px 20px;
-    width: 90%;
+    width: 80%;
     border-radius: 10px;
     border: .5px solid rgb(205, 204, 204);
-    max-width: 275px;
+}
+
+.passwordWrapper {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+  
+.passwordInput {
+    width: 80%;
+    padding: 15px;
+    padding-right: 40px;
+    font-size: 16px;
+}
+
+.eyeIcon {
+    position: absolute;
+    right: 35px;
+    top: 12px;
+    color: black;
+    cursor: pointer;
+    font-size: 1.5em;
 }
 
 button {
@@ -109,7 +132,7 @@ h1 {
     }
 }
 
-@media screen and (orientation: landscape) and (max-height: 762px) {
+@media screen and (orientation: landscape) and (max-height: 470px) {
     .container {
         width: 44vw;
         padding: 10px;
@@ -123,12 +146,8 @@ h1 {
     input, button {
         margin-top: 15px;
     }
-}
 
-@media screen and (max-width: 500px) and (orientation: portrait) {
-    .container {
-        width: 90vw;
-        padding: 10px;
-        border: none;
+    .eyeIcon {
+        top: 26.94px;
     }
 }

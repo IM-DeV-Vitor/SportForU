@@ -1,10 +1,15 @@
 import styles from "./login-items.module.css"
 import imageLogo from "/assets/logo.jpg"
-import { useEffect, useState } from "react"
+import {  useState } from "react"
+import { IoMdEye } from "react-icons/io";
+import { IoMdEyeOff } from "react-icons/io";
 
 export default function LoginItems() {
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
     const handleLogin = async () => {
         try {
@@ -39,13 +44,27 @@ export default function LoginItems() {
                 <div className={styles.inputsContainer}>
                     <input type="email" name="email" id={styles.email} required placeholder="Email: "
                     value={Email}
-                    onChange={(e) => setEmail(e.target.value)}  
+                    onChange={(e) => setEmail(e.target.value)}
                     />
-                    <input type="password" name="password" id={styles.password} required placeholder="Password: "
-                    value={Password}
-                    onChange={(e) => setPassword(e.target.value)}/>
+
+                    <div className={styles.passwordWrapper}>
+                        <input type={showPassword ? "text" : "password"} name="password" id={styles.password} required placeholder="Password: "
+                        value={Password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        style={{
+                            padding: "15px",
+                            width: "90%",
+                        }}/>
+
+                        <div
+                            onClick={togglePasswordVisibility}
+                            className={styles.eyeIcon}
+                        >
+                           { showPassword ? <IoMdEye /> : <IoMdEyeOff />}
+                        </div>
+                    </div>
                     <button onClick={handleLogin}>Login</button>
                 </div>
-        </div>
+            </div>
     ) 
 }
