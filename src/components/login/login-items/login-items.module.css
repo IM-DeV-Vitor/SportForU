@@ -104,3 +104,19 @@ h1 {
         margin-bottom: 20px;
     }
 }
+
+@media screen and (orientation: landscape) and (max-height: 762px) {
+    .container {
+        width: 44vw;
+        padding: 10px;
+        border: none;
+    }
+
+    #logo {
+        display: none;
+    }
+
+    input, button {
+        margin-top: 15px;
+    }
+}
