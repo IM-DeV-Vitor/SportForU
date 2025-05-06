@@ -9,7 +9,7 @@ export default function RegisterItems() {
     const [Password, setPassword] = useState("")
     const [Fullname, setFullname] = useState("")
     const [ConfirmedPassword, setConfirmedPassword] = useState("")
- //https://sportforu-backend.onrender.com/auth/register
+ 
 
 
     const handleRegister = async (e) => {
@@ -20,7 +20,7 @@ export default function RegisterItems() {
             return alert("Senha muito curta")
         }
         try {
-            const response = await fetch("http://localhost:8080/auth/register", {
+            const response = await fetch("https://sportforu-backend.onrender.com/auth/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

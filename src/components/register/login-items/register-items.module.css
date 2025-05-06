@@ -10,18 +10,17 @@
     width: 22vw;
     align-items: center;
     justify-content: center;
-    padding: 50px;
+    padding: 30px;
     background-color: black;
     border-radius: 8px;
     border: .6px solid white;
-    overflow: hidden;
 }
 
 .inputsContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     width: 100%;
 }
 
