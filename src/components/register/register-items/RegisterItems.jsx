@@ -75,7 +75,7 @@ export default function RegisterItems() {
                         }}
                     />
                     <button onClick={handleRegister}>Register</button>
-                    <Link to={"/auth/login"}>Alright have an account?</Link>
+                    <Link to={"/auth/login"}>Already have an account?</Link>
                 </div>
             </div>
     ) 

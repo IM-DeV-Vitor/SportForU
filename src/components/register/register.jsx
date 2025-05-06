@@ -1,5 +1,5 @@
 import styles from "./register.module.css"
-import RegisterItems from "./login-items/RegisterItems"
+import RegisterItems from "./register-items/RegisterItems"
 
 export default function Register () {
     return (
