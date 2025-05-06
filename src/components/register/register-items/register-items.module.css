@@ -10,7 +10,7 @@
     width: 22vw;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    padding: 10px 30px 50px 30px;
     background-color: black;
     border-radius: 8px;
     border: .6px solid white;
@@ -81,6 +81,7 @@ a {
     color: white;
     font-size: 1.04em;
     text-decoration: none;
+    margin-top: 7px;
 }
 
 a:hover {
