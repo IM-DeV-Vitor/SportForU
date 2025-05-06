@@ -125,6 +125,10 @@ a:hover {
         width: 100vw;
     }
 
+    a {
+        font-size: 0.8em;
+    }
+
     #logo {
         height: 130px;
         width: 130px;
