@@ -32,6 +32,10 @@ input {
     border: .5px solid rgb(205, 204, 204);
 }
 
+input:focus {
+   outline: .8px solid #0faeff;
+}
+
 .passwordWrapper {
     position: relative;
     width: 90%;
