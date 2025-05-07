@@ -5,12 +5,15 @@ import { useNavigate } from "react-router-dom";
 import {  useState } from "react"
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
+import Alert from "../../main/alerts/alert-container.jsx";
 
 export default function LoginItems() {
     const navigate = useNavigate()
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
+    const [alertVisible, setAlertVisible] = useState(false);
 
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -30,14 +33,14 @@ export default function LoginItems() {
             if (response.ok) {
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("email", Email);
-    
-                alert("Login successful");
                 navigate("/")
             } else {
-                alert("Login failed: " + data.message);
+                setAlertMessage(data.message || "Erro ao fazer login");
+                setAlertVisible(true)
             }
         } catch (error) {
-            console.error("Error during login:", error);
+            setAlertMessage("Erro de conexão com o servidor");
+            setAlertVisible(true);
         }
     };
 
@@ -73,6 +76,12 @@ export default function LoginItems() {
                         </div>
                     </div>
                     <button onClick={handleLogin}>Login</button>
+                    <Alert
+                        id="alertBox"
+                        message={alertMessage}
+                        style={{ display: alertVisible ? "flex" : "none" }}
+                        onClose={() => setAlertVisible(false)}
+                    />
                     <Link to={"/auth/register"}>Haven't an account?</Link>
                 </div>
             </div>

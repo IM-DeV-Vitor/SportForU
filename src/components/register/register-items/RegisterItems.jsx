@@ -2,6 +2,7 @@ import styles from "./register-items.module.css"
 import imageLogo from "/assets/logo.jpg"
 import { Link, useNavigate } from "react-router-dom";
 import {  useState } from "react"
+import Alert from "../../main/alerts/alert-container";
 
 export default function RegisterItems() {
     const navigate = useNavigate()
@@ -9,15 +10,25 @@ export default function RegisterItems() {
     const [Password, setPassword] = useState("")
     const [Fullname, setFullname] = useState("")
     const [ConfirmedPassword, setConfirmedPassword] = useState("")
+    const [alertMessage, setAlertMessage] = useState("");
+    const [alertVisible, setAlertVisible] = useState(false);
  
 
 
     const handleRegister = async (e) => {
         e.preventDefault()
-        if (Password != ConfirmedPassword) {
-            return alert("Senhas não conhecidem")
-        } else if (Password.length < 5){
-            return alert("Senha muito curta")
+        if (Fullname == "" || Email == "" || Password == "") {
+            setAlertMessage("É preciso preencher todos os campos!")
+            setAlertVisible(true)
+            return res.status(500).json({message: "Valor inválido"})
+        }else if (Password != ConfirmedPassword) {
+            setAlertMessage("As senhas não conhecidem")
+            setAlertVisible(true)
+            return
+        }else if (Password.length < 5){
+            setAlertMessage("A senha deve ter no mínimo 6 caracteres")
+            setAlertVisible(true)
+            return
         }
         try {
             const response = await fetch("https://sportforu-backend.onrender.com/auth/register", {
@@ -34,11 +45,11 @@ export default function RegisterItems() {
             if (response.ok) {
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("email", Email);
-    
-                alert("Register successfuly");
+
                 navigate("/")
             } else {
-                alert("Register failed: " + data.message);
+                setAlertMessage(data.message || "Register failed");
+                setAlertVisible(true)
             }
         } catch (error) {
             console.error("Error during register:", error);
@@ -75,6 +86,12 @@ export default function RegisterItems() {
                         }}
                     />
                     <button onClick={handleRegister}>Register</button>
+                    <Alert
+                        id="alertBox"
+                        message={alertMessage}
+                        style={{ display: alertVisible ? "flex" : "none" }}
+                        onClose={() => setAlertVisible(false)}
+                    />
                     <Link to={"/auth/login"}>Already have an account?</Link>
                 </div>
             </div>

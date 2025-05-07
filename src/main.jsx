@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from "./components/main/App.jsx"
 import { BrowserRouter } from 'react-router-dom'
+import Alert from './components/main/alerts/alert-container.jsx'
 
 const root = ReactDOM.createRoot(document.querySelector("#root"))
 
