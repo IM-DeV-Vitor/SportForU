@@ -87,7 +87,6 @@ export default function RegisterItems() {
                     />
                     <button onClick={handleRegister}>Register</button>
                     <Alert
-                        id="alertBox"
                         message={alertMessage}
                         style={{ display: alertVisible ? "flex" : "none" }}
                         onClose={() => setAlertVisible(false)}

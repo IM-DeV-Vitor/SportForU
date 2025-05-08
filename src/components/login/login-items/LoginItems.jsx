@@ -77,7 +77,6 @@ export default function LoginItems() {
                     </div>
                     <button onClick={handleLogin}>Login</button>
                     <Alert
-                        id="alertBox"
                         message={alertMessage}
                         style={{ display: alertVisible ? "flex" : "none" }}
                         onClose={() => setAlertVisible(false)}

@@ -1,11 +1,11 @@
-import { useState } from "react";
 import styles from "./alert-container.module.css";
 import { AiOutlineClose } from "react-icons/ai";
+import { TbAlertTriangle } from "react-icons/tb";
 
-export default function Alert({ id, style = {}, onClose, message }) {
+export default function Alert({ style = {}, onClose, message }) {
     return (
         <div
-            id={id}
+            className={styles.alertBox}
             style={{
                 position: "fixed",
                 top: "85%",
@@ -14,8 +14,8 @@ export default function Alert({ id, style = {}, onClose, message }) {
                 justifyContent: "center",
                 flexDirection: "column",
                 fontFamily: "Arial, Helvetica, sans-serif",
-                color: "white",
                 textAlign: "justify",
+                color: "white",
                 padding: "10px 20px 20px 20px",
                 backgroundColor: "black",
                 height: "13vh",
@@ -31,7 +31,8 @@ export default function Alert({ id, style = {}, onClose, message }) {
             <div className={styles.icon}>
                 <AiOutlineClose onClick={onClose} style={{ cursor: "pointer" }} />
             </div>
-            <h1 style={{ color: "white" }}>Alerta</h1>
+            <h1 style={{ color: "white" }} >Alerta <TbAlertTriangle className={styles.triangleIcon}/></h1>
+            
             <p>{message}</p>
         </div>
     );
