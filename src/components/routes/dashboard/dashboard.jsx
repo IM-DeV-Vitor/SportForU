@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import DashboardHeader from "../general-components/header/dashboard-header.jsx";
 
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -15,10 +16,8 @@ export default function Dashboard() {
 
     return (
         <div>
-            <h1 style={{textAlign:"center"}}>Dashboard</h1>
-            <p style={{textAlign:"justify", color:"white",fontFamily:"Arial", fontSize:"1.6em"}}>Área em desenvolvimento</p>
-
-            <button onClick={() => {
+            <DashboardHeader />
+            <button style={{marginTop:"64.2vh"}}onClick={() => {
                 localStorage.clear();
                 navigate("/auth/login");
             }}>

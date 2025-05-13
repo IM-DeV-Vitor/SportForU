@@ -9,6 +9,7 @@
     }
 }
 
+
 .icon {
     color: rgb(255, 255, 255);
     position: absolute;
@@ -24,11 +25,27 @@
 .alertBox {
     animation: entradaAlert .5s ease-in-out forwards;
     max-width: 686px;
+    height: 13vh;
+    padding: 5px 0px 0px 0px;
+    font-size: 1em;
 }
 
 h1 {
     display: flex;
     align-items: center;
+    margin-top: 5px;
     gap: 10px;
+    padding: .3em 0px;
 }
 
+@media screen and (max-height: 640px) {
+    .alertBox {
+        height: 16vh;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .alertBox {
+        font-size: .8em;
+    }
+}

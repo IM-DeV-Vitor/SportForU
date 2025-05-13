@@ -3,6 +3,7 @@ import imageLogo from "/assets/logo.jpg"
 import { Link, useNavigate } from "react-router-dom";
 import {  useState } from "react"
 import Alert from "../../main/alerts/alert-container";
+import Loader from "react-js-loader"
 
 export default function RegisterItems() {
     const navigate = useNavigate()
@@ -12,23 +13,24 @@ export default function RegisterItems() {
     const [ConfirmedPassword, setConfirmedPassword] = useState("")
     const [alertMessage, setAlertMessage] = useState("");
     const [alertVisible, setAlertVisible] = useState(false);
- 
+    const [contentLoading, setContentLoading] = useState(false);
 
 
     const handleRegister = async (e) => {
         e.preventDefault()
+        setContentLoading(true)
         if (Fullname == "" || Email == "" || Password == "") {
             setAlertMessage("É preciso preencher todos os campos!")
             setAlertVisible(true)
-            return res.status(500).json({message: "Valor inválido"})
+            return setContentLoading(false)
         }else if (Password != ConfirmedPassword) {
             setAlertMessage("As senhas não conhecidem")
             setAlertVisible(true)
-            return
+            return setContentLoading(false)
         }else if (Password.length < 5){
             setAlertMessage("A senha deve ter no mínimo 6 caracteres")
             setAlertVisible(true)
-            return
+            return setContentLoading(false)
         }
         try {
             const response = await fetch("https://sportforu-backend.onrender.com/auth/register", {
@@ -41,15 +43,18 @@ export default function RegisterItems() {
                 })
             });
             const data = await response.json();
+            setContentLoading(true)
     
             if (response.ok) {
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("email", Email);
 
                 navigate("/")
+                setContentLoading(false)
             } else {
                 setAlertMessage(data.message || "Register failed");
                 setAlertVisible(true)
+                setContentLoading(false)
             }
         } catch (error) {
             console.error("Error during register:", error);
@@ -85,7 +90,17 @@ export default function RegisterItems() {
                             }
                         }}
                     />
-                    <button onClick={handleRegister}>Register</button>
+                    <button onClick={handleRegister}>
+                        {contentLoading ? <Loader
+                        className={styles.contentLoader}
+                        type="box-rectangular"
+                        bgColor={"#FFFFFF"}
+                        color={"#FFFFFF"}
+                        size={20}
+                        /> 
+                        : 
+                        "Register"}
+                    </button>
                     <Alert
                         message={alertMessage}
                         style={{ display: alertVisible ? "flex" : "none" }}

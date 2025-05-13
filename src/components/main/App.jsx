@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "../login/login.jsx";
 import Register from "../register/register.jsx";
-import Dashboard from "../routes/dashboard.jsx";
+import Dashboard from "../routes/dashboard/dashboard.jsx";
 
 function App() {
   return (

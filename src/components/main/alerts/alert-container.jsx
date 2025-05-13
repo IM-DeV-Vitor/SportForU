@@ -16,15 +16,14 @@ export default function Alert({ style = {}, onClose, message }) {
                 fontFamily: "Arial, Helvetica, sans-serif",
                 textAlign: "justify",
                 color: "white",
-                padding: "10px 20px 20px 20px",
+                padding: "20px 20px 40px 20px",
                 backgroundColor: "black",
-                height: "13vh",
                 width: "85vw",
                 border: "1px solid white",
                 borderRadius: "15px",
                 zIndex: 10,
                 boxShadow: "0 0 10px rgba(0,0,0,0.3)",
-                display: "block", 
+                display: "block",
                 ...style,
             }}
         >

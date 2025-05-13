@@ -6,6 +6,7 @@ import {  useState } from "react"
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import Alert from "../../main/alerts/alert-container.jsx";
+import Loader from "react-js-loader"
 
 export default function LoginItems() {
     const navigate = useNavigate()
@@ -14,12 +15,14 @@ export default function LoginItems() {
     const [showPassword, setShowPassword] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const [alertVisible, setAlertVisible] = useState(false);
+    const [contentLoading, setContentLoading] = useState(false)
 
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
     const handleLogin = async (e) => {
         e.preventDefault()
         try {
+            setContentLoading(true)
             const response = await fetch("https://sportforu-backend.onrender.com/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -34,9 +37,11 @@ export default function LoginItems() {
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("email", Email);
                 navigate("/")
+                setContentLoading(false)
             } else {
                 setAlertMessage(data.message || "Erro ao fazer login");
                 setAlertVisible(true)
+                setContentLoading(false)
             }
         } catch (error) {
             setAlertMessage("Erro de conexão com o servidor");
@@ -60,13 +65,13 @@ export default function LoginItems() {
                         onChange={(e) => setPassword(e.target.value)}
                         style={{
                             padding: "15px",
-                            width: "90%",
                         }}
                         onKeyDownCapture={(e) => {
                             if(e.key === "Enter") {
                                 handleLogin(e)
                             }
-                        }}/>
+                        }}
+                        className={styles.passwordInput}/>
 
                         <div
                             onClick={togglePasswordVisibility}
@@ -75,7 +80,17 @@ export default function LoginItems() {
                            { showPassword ? <IoMdEye /> : <IoMdEyeOff />}
                         </div>
                     </div>
-                    <button onClick={handleLogin}>Login</button>
+                    <button onClick={handleLogin}>
+                        {contentLoading ? <Loader
+                        className={styles.contentLoader}
+                        type="box-rectangular"
+                        bgColor={"#FFFFFF"}
+                        color={"#FFFFFF"}
+                        size={20}
+                        /> 
+                        : 
+                        "Login"}
+                    </button>
                     <Alert
                         message={alertMessage}
                         style={{ display: alertVisible ? "flex" : "none" }}
