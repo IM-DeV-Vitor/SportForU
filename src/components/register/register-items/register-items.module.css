@@ -20,11 +20,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 25px;
+    gap: 15px;
     width: 100%;
-    & a {
-        gap: 5px;
-    }
 }
 
 input {
@@ -61,6 +58,7 @@ button {
     border: none;
     border-radius: 15px;
     border: 1px solid white;
+    margin-top: 15px;
     transition: all 0.8s ease-in-out;
     overflow: hidden;
 }
@@ -87,6 +85,7 @@ a {
     color: white;
     font-size: 1.04em;
     text-decoration: none;
+    margin-top: 15px;
 }
 
 a:hover {
