@@ -44,7 +44,7 @@ ul {
     gap: 2em;
     padding: 0.5em 1em;
     border-radius: 12px;
-    box-shadow: -1.5px -1.5px 4px rgba(255, 255, 255, 0.51);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.51);
 }
 
 li {
