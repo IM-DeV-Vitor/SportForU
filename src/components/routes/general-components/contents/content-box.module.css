@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 100vw;
+}
+
+.contentContainer {
+    overflow: hidden;
+    color: white;
+    height: 300px;
+    width: 300px;
+    font-size: 10pt;
+    text-align: justify;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid white;
+    margin: 10px;
+}
+
+.father {
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 600px;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 816px) {
+    .contentContainer {
+        height: 250px;
+        width: 250px;
+    }
+
+    .container {
+        gap: 15px;
+    }
+}

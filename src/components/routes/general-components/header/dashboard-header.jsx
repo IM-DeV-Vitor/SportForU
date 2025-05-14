@@ -5,10 +5,11 @@ export default function DashboardHeader () {
     return (
         <div className={styles.supremeFather}>
             <div className={styles.container}>
-                <div><img src={imageLogo} alt="Logo"  className={styles.icon}/></div>
-                <h1>Home</h1>
-                <div className={styles.profile}>
+                <div>
+                    <img src={imageLogo} alt="Logo"  className={styles.icon}/>
                 </div>
+                <h1>Home</h1>
+                <div className={styles.profile}> </div>
             </div>
             <nav>                    
                 <ul>
